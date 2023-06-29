@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -5,6 +7,13 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 class VController extends GetxController{
 
   VideoPlayerController? onlineVideoController;
+
+  RxInt setIndexNo = 0.obs;
+
+  void assignRandomSetIndexNo(){
+    Random random = Random();
+    setIndexNo.value = random.nextInt(4);
+  }
 
   //: check for cache
   Future<FileInfo?> checkCacheFor(String url) async {
@@ -27,7 +36,6 @@ class VController extends GetxController{
         onlineVideoController!.initialize().then((value) {
            cachedForUrl(url);
            onlineVideoController!.play();
-
         });
      } else {
         final file = fileInfo.file;

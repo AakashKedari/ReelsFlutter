@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
+import 'package:reelsapp/controllers/videoController.dart';
 import 'package:video_player/video_player.dart';
 import 'Options.dart';
 
@@ -16,8 +17,11 @@ class FeedItem extends StatefulWidget {
 }
 
 class _FeedItemState extends State<FeedItem> {
-  //player controller
+  // Defining the VideoPlayer controller
   VideoPlayerController? _controller;
+
+  // Finding the previously initialised instance of VController
+  VController vController = Get.find<VController>();
 
   @override
   void initState() {
